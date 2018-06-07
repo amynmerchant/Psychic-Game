@@ -2,6 +2,11 @@ var compChoice = ("abcdefghijklmnopqrstuvwxyz").split("");
 
 var wins = 0;
 
+function updateWins() {
+    document.querySelector("#wins").innerHTML = "Wins: " + score;
+  }
+
+
 var losses = 0;
 
 var guessLeft = 9;
