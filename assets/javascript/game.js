@@ -1,74 +1,59 @@
 var compChoice = ("abcdefghijklmnopqrstuvwxyz").split("");
+var toGuess = compChoice[Math.floor(Math.random() * compChoice.length)];
+
 
 var wins = 0;
-
-function updateWins() {
-    document.querySelector("#wins").innerHTML = "Wins: " + score;
-  }
+function winCheck() {
+    document.querySelector("#wins").innerHTML = "Wins: " + wins;
+}
+winCheck();
 
 
 var losses = 0;
-
-var guessLeft = 9;
-
-var soFar = 
-
-function reset() {
-    wins = 0;
-    losses = 0;
-    guessLeft = 9;
-    soFar = "";
+function lossCheck() {
+    document.querySelector("#losses").innerHTML = "Losses: " + losses;
 }
+lossCheck();
 
-function reStart() {
-    guessLeft = 9;
-    soFar = "";
+
+var guessesLeft = 9;
+function guessesLeftCheck() {
+    document.querySelector("#guessesLeft").innerHTML = "Guesses left: " + guessesLeft;
 }
-
-function matchKey() {
-    document.querySelector("#soFar").innerHTML = userChoice;
-
-    
-        document.querySelector("#soFar").innerHTML = userChoice;
-        //reset guessesLeft and SoFar
-    }
-    else {
-        //let soFar take upto 10 values, at 10th value
-        losses++;
-    }
-}
-
+guessesLeftCheck();
 
 
 document.onkeyup = function(event) {
+    var userGuess = event.key.toLowerCase();
+    
+    var soFar = [];
+    soFar.push(userGuess);
+    document.querySelector("#soFar").innerHTML = "Your guesses so far: " + userGuess;
+    guessesLeft--;
+    guessesLeftCheck();
 
-    var userChoice = event.key.toLowerCase();
-
-    document.querySelector("soFar").innerHTML = userChoice + ", ";
-    for (i = 0; i < 10; i++)
-        if(compChoice === userChoice) {
-            wins++;
-            break;
-            reStart();
-        };
-
-        else {
-            guessLeft--;
-            //prints more of the userChoice upto 9 more
+    if (userGuess === toGuess) {
+        alert("Correct! What are the chances!!");
+        wins++;
+        winCheck();
+        guessesLeft = 9;
+        guessesLeftCheck();
+        toGuess = compChoice[Math.floor(Math.random() * compChoice.length)];
+        soFar = [];
         }
-
-        if (guessLeft = 0) {
-            alert("Out of guesses. Start again!")
-            return;
-            reset();
+        
+    else if (guessesLeft === 0) {
+        alert("Out of attempts. Start again!");
+        losses++;
+        lossCheck();
+        guessesLeft = 9;
+        guessesLeftCheck();
+        toGuess = compChoice[Math.floor(Math.random() * compChoice.length)];
+        soFar = []; 
         }
+    }
+    
 
-      
+//unable to figure out how to generate a new computer guess at the begining of each round and how to print userGuesses in a string.
+//Also want to limit user input to only alphabets.
 
-      
-
-
-
-
-
-//console.log(compChoice);
