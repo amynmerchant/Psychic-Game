@@ -54,6 +54,6 @@ document.onkeyup = function(event) {
     }
     
 
-//unable to figure out how to generate a new computer guess at the begining of each round and how to print userGuesses in a string.
+//How to print userGuesses in a string.
 //Also want to limit user input to only alphabets.
 
