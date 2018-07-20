@@ -28,6 +28,7 @@ document.onkeyup = function(event) {
     
     var soFar = [];
     soFar.push(userGuess);
+    
     document.querySelector("#soFar").innerHTML = "Your guesses so far: " + userGuess;
     guessesLeft--;
     guessesLeftCheck();
@@ -54,6 +55,6 @@ document.onkeyup = function(event) {
     }
     
 
-//How to print userGuesses in a string.
+//How to print userGuesses in a string. Want to wipe out the string at the start of each round.
 //Also want to limit user input to only alphabets.
 
